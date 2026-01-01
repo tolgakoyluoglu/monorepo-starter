@@ -1,6 +1,6 @@
 # Fullstack Monorepo - NestJS + React
 
-A fullstack TypeScript monorepo using pnpm workspaces, featuring a NestJS API backend with PostgreSQL and React frontend with Vite.
+A fullstack TypeScript monorepo using pnpm workspaces, featuring a NestJS Fastify API backend with PostgreSQL and React frontend with Vite.
 
 ## Setup
 
@@ -76,38 +76,6 @@ Copy the example environment file and update as needed:
 
 ```bash
 cp apps/api/.env.example apps/api/.env
-```
-
-Key environment variables:
-
-- `DATABASE_URL` - PostgreSQL connection string (default: `postgresql://postgres:postgres@localhost:5432/fullstack_dev`)
-- `PORT` - API server port (default: 3000)
-- `CORS_ORIGIN` - Allowed CORS origins
-
-### Extending Base Configs
-
-All packages extend the root-level configurations:
-
-#### TypeScript (`tsconfig.json`)
-
-```json
-{
-  "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    // Package-specific overrides
-  }
-}
-```
-
-#### ESLint (`eslint.config.mjs`)
-
-```javascript
-import baseConfig from '../../eslint.config.base.mjs'
-
-export default tseslint.config(
-  ...baseConfig,
-  // Package-specific configs
-)
 ```
 
 #### Prettier
