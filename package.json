@@ -1,0 +1,26 @@
+{
+  "name": "monorepo-fastify-react",
+  "version": "1.0.0",
+  "description": "A fullstack monorepo with Fastify API and React client",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --parallel --filter \"./apps/*\" dev",
+    "build": "pnpm --recursive --filter \"./shared\" --filter \"./apps/*\" build",
+    "lint": "pnpm --recursive lint",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "clean": "pnpm --recursive clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "eslint": "^9.39.2",
+    "eslint-plugin-prettier": "^5.2.2",
+    "prettier": "^3.7.4",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.49.0"
+  },
+  "keywords": ["monorepo", "pnpm", "typescript", "fastify", "react"],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.23.0"
+}

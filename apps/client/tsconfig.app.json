@@ -1,0 +1,32 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+
+    // Vite/React-specific compiler options
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "types": ["vite/client"],
+    "jsx": "react-jsx",
+    "noEmit": true,
+
+    // Vite bundler mode
+    "useDefineForClassFields": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noUncheckedSideEffectImports": true,
+    "erasableSyntaxOnly": true,
+
+    // Path aliases
+    "baseUrl": ".",
+    "paths": {
+      "@repo/shared": ["../../shared/src/index.ts"],
+      "@repo/shared/*": ["../../shared/src/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"]
+}
