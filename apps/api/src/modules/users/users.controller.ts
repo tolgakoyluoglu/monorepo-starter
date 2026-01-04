@@ -4,7 +4,7 @@ import { UsersService } from './users.service'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { AuthGuard } from '@/common/guards'
 import { CurrentUser } from '@/common'
-import { User } from '@prisma/client'
+import { User } from '@/db'
 
 @ApiTags('Users')
 @ApiBearerAuth('access-token')

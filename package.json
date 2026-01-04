@@ -19,7 +19,13 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.49.0"
   },
-  "keywords": ["monorepo", "pnpm", "typescript", "fastify", "react"],
+  "keywords": [
+    "monorepo",
+    "pnpm",
+    "typescript",
+    "fastify",
+    "react"
+  ],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.23.0"

@@ -6,7 +6,7 @@ import { ZodValidationPipe } from 'nestjs-zod'
 import { loggerConfig } from './config'
 import { HttpExceptionFilter, SanitizePipe } from './common'
 import { AppController } from './app.controller'
-import { PrismaModule } from './prisma/prisma.module'
+import { DbModule } from './db'
 import { AuthModule } from './modules/auth/auth-module'
 import { UsersModule } from './modules/users/users.module'
 
@@ -16,7 +16,7 @@ import { UsersModule } from './modules/users/users.module'
       isGlobal: true,
     }),
     LoggerModule.forRoot(loggerConfig),
-    PrismaModule,
+    DbModule,
     AuthModule,
     UsersModule,
   ],

@@ -1,14 +1,24 @@
+import 'dotenv/config'
 import { betterAuth } from 'better-auth'
-import { prismaAdapter } from 'better-auth/adapters/prisma'
+import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { emailOTP } from 'better-auth/plugins'
-import { PrismaService } from '@/prisma/prisma.service'
 import { sendEmail } from '@/common/services'
+import { drizzle } from 'drizzle-orm/node-postgres'
+import { Pool } from 'pg'
+import * as schema from '@/db/schema'
 
-const prisma = new PrismaService()
+const pool = new Pool({ connectionString: process.env.DATABASE_URL })
+const db = drizzle(pool, { schema })
 
 export const auth = betterAuth({
-  database: prismaAdapter(prisma, {
-    provider: 'postgresql',
+  database: drizzleAdapter(db, {
+    provider: 'pg',
+    schema: {
+      user: schema.users,
+      account: schema.accounts,
+      session: schema.sessions,
+      verification: schema.verifications,
+    },
   }),
   user: {
     additionalFields: {
@@ -16,6 +26,12 @@ export const auth = betterAuth({
         type: 'string',
         required: false,
         defaultValue: 'OWNER',
+        input: false,
+      },
+      superAdmin: {
+        type: 'boolean',
+        required: false,
+        defaultValue: false,
         input: false,
       },
     },

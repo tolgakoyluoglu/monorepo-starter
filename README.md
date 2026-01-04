@@ -26,12 +26,12 @@ pnpm --filter @repo/shared build
 # Start PostgreSQL database
 docker compose up -d
 
-# Generate Prisma client (run from apps/api directory)
+# Generate Drizzle client (run from apps/api directory)
 cd apps/api
-pnpm prisma:generate
+pnpm db:generate
 
 # Create initial migration
-pnpm prisma migrate dev --name init
+pnpm db:migrate dev --name init
 ```
 
 ## Development

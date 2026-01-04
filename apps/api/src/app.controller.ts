@@ -1,11 +1,12 @@
 import { Controller, Get } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
-import { PrismaService } from './prisma/prisma.service'
+import { DbService } from '@/db'
+import { sql } from 'drizzle-orm'
 
 @ApiTags('System')
 @Controller()
 export class AppController {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly dbService: DbService) {}
 
   @Get('health')
   async getHealth() {
@@ -15,7 +16,7 @@ export class AppController {
 
     try {
       const dbStart = Date.now()
-      await this.prisma.$queryRaw`SELECT 1`
+      await this.dbService.db.execute(sql`SELECT 1`)
       dbResponseTime = Date.now() - dbStart
       dbStatus = 'connected'
     } catch {

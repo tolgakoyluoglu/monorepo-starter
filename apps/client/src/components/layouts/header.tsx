@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { authClient } from '@/lib/auth-client'
-import { ModeToggle } from '../mode-toggle'
+import { ModeToggle } from '../common/mode-toggle'
 import { MobileNav } from './sidebar'
 import { cn } from '@/lib/utils'
 

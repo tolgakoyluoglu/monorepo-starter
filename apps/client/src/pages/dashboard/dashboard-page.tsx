@@ -56,7 +56,7 @@ export const DashboardPage = () => {
 
   return (
     <div className="flex flex-col gap-6 h-full">
-      <div className={'grid gap-4 ' + (user?.businessId ? 'lg:grid-cols-3' : 'lg:grid-cols-1')}>
+      <div className="grid gap-4 lg:grid-cols-1">
         <Card className="lg:col-span-2">
           <CardHeader>
             <CardTitle className="text-2xl">
