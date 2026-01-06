@@ -5,7 +5,7 @@ import { ChevronLeft } from 'lucide-react'
 export const LoginPage = () => {
   return (
     <div className="min-h-screen flex">
-      <div className="hidden lg:flex w-1/2 bg-gradient-to-br from-primary to-blue-600 relative overflow-hidden">
+      <div className="hidden lg:flex w-1/2 bg-linear-to-br from-primary to-blue-600 relative overflow-hidden">
         <div className="absolute inset-0 opacity-30 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRoLTJ2LTRoMnYtMmgtMnYtNGgydi0ySDI0djJoMnY0aC0ydjJoMnY0aC0ydjJoMTJ2LTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')]" />
         <div className="relative z-10 flex flex-col justify-center p-12 text-white">
           <div className="max-w-md">

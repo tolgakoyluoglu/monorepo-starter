@@ -99,9 +99,7 @@ export const RegisterForm = () => {
           <span className="w-full border-t border-border" />
         </div>
         <div className="relative flex justify-center">
-          <span className="bg-card px-2 text-xs uppercase text-muted-foreground">
-            Or continue with
-          </span>
+          <span className="px-2 text-xs uppercase text-muted-foreground">Or continue with</span>
         </div>
       </div>
 

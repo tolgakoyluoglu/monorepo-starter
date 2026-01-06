@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { authClient } from '@/lib/auth-client'
-import { ModeToggle } from '../common/mode-toggle'
 import { MobileNav } from './sidebar'
 import { cn } from '@/lib/utils'
+import { Moon, Sun } from 'lucide-react'
+import { useTheme } from '@/hooks/use-theme'
 
 export function Header({ fullWidth }: { fullWidth?: boolean }) {
   const { data: session } = authClient.useSession()
+  const { theme, setTheme } = useTheme()
 
   return (
     <nav
@@ -27,7 +29,14 @@ export function Header({ fullWidth }: { fullWidth?: boolean }) {
         </div>
 
         <div className="flex items-center gap-3">
-          <ModeToggle />
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            title="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </Button>
           {session ? (
             <span className="text-sm text-muted-foreground hidden sm:inline">
               {session.user?.email}

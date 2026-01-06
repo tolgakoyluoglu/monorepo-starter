@@ -3,7 +3,7 @@ import { relations } from 'drizzle-orm'
 
 export type User = typeof users.$inferSelect
 
-export const userRoleEnum = pgEnum('user_role', ['OWNER', 'STAFF', 'CONSUMER'])
+export const userRoleEnum = pgEnum('user_role', ['OWNER', 'EMPLOYEE', 'ADMIN'])
 
 export const users = pgTable('user', {
   id: text('id')

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { authClient } from '@/lib/auth-client'
+import { Loading } from './ui/loading'
 
 export const GuestRoute = ({ children }: { children: React.ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true)
@@ -22,7 +23,11 @@ export const GuestRoute = ({ children }: { children: React.ReactNode }) => {
   }, [])
 
   if (isLoading) {
-    return <>Loading</>
+    return (
+      <div className="flex justify-center items-center min-h-200">
+        <Loading />
+      </div>
+    )
   }
 
   if (isAuthenticated) {

@@ -1,4 +1,4 @@
 import { Reflector } from '@nestjs/core'
-import { UserRole } from '@repo/shared'
 
+type UserRole = 'OWNER' | 'EMPLOYEE' | 'ADMIN'
 export const Roles = Reflector.createDecorator<UserRole[]>()
