@@ -23,11 +23,7 @@ export const GuestRoute = ({ children }: { children: React.ReactNode }) => {
   }, [])
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-200">
-        <Loading />
-      </div>
-    )
+    return <Loading fullPage />
   }
 
   if (isAuthenticated) {

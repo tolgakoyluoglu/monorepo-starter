@@ -1,60 +1,87 @@
-import { Link } from 'react-router-dom'
-import { LoginForm } from './login-form'
-import { ChevronLeft } from 'lucide-react'
+import { useSession } from '@/hooks/use-auth'
+import { FaGoogle, FaMicrosoft, FaGithub } from 'react-icons/fa'
+import { Button } from '@/components/ui/button'
+import { Link, Navigate } from 'react-router-dom'
+import { signInWithGithub, signInWithGoogle, signInWithMicrosoft } from '@/lib/auth-client'
 
 export const LoginPage = () => {
+  const { user } = useSession()
+
+  if (user) {
+    return <Navigate to="/dashboard" />
+  }
+
   return (
-    <div className="min-h-screen flex">
-      <div className="hidden lg:flex w-1/2 bg-linear-to-br from-primary to-blue-600 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRoLTJ2LTRoMnYtMmgtMnYtNGgydi0ySDI0djJoMnY0aC0ydjJoMnY0aC0ydjJoMTJ2LTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')]" />
-        <div className="relative z-10 flex flex-col justify-center p-12 text-white">
-          <div className="max-w-md">
-            <h1 className="text-4xl font-bold mb-6">Welcome back!</h1>
-            <p className="text-lg opacity-80 mb-8">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.
-            </p>
-          </div>
+    <div className="min-h-screen w-full lg:grid lg:grid-cols-2">
+      <div className="relative hidden lg:flex flex-col justify-between bg-primary border-r p-10 text-white dark:border-r">
+        <div className="absolute inset-0 bg-linear-to-br from-primary-900 via-primary-800 to-black" />
+        <div className="relative z-20 flex items-center text-lg font-medium">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="mr-2 h-6 w-6"
+          >
+            <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
+          </svg>
+          Monorepo Starter
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col">
-        <div>
-          <Link
-            to="/"
-            className="p-4 lg:p-8 inline-flex items-center gap-2 text-sm text-muted-foreground no-underline hover:text-foreground transition-colors"
-          >
-            <ChevronLeft size={16} />
-            Back to home
-          </Link>
-        </div>
-
-        <div className="flex-1 flex items-center justify-center p-4 lg:p-8">
-          <div className="w-full max-w-sm">
-            <div className="mb-6 text-center lg:text-left space-y-2">
-              <h2 className="text-2xl font-semibold tracking-tight">Sign in</h2>
-              <p className="text-muted-foreground">Enter your credentials to access your account</p>
-            </div>
-
-            <LoginForm />
-
-            <div className="mt-6 text-center text-sm space-y-2">
-              <Link
-                to="/forgot-password"
-                className="text-muted-foreground no-underline hover:text-primary transition-colors"
-              >
-                Forgot your password?
-              </Link>
-              <p className="text-muted-foreground">
-                Don't have an account?{' '}
-                <Link
-                  to="/register"
-                  className="text-primary font-medium no-underline hover:underline"
-                >
-                  Sign up
-                </Link>
-              </p>
-            </div>
+      <div className="flex min-h-screen items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative">
+        <div className="w-full max-w-md space-y-8">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">Welcome back</h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Sign in or create an account to get started
+            </p>
           </div>
+
+          <div className="flex flex-col gap-4 mt-8">
+            <Button
+              variant="outline"
+              onClick={() => signInWithGoogle()}
+              className="w-full flex items-center justify-center gap-2 h-12 text-base"
+            >
+              <FaGoogle className="h-5 w-5" />
+              <span>Continue with Google</span>
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => signInWithMicrosoft()}
+              className="w-full flex items-center justify-center gap-2 h-12 text-base"
+            >
+              <FaMicrosoft className="h-5 w-5" />
+              <span>Continue with Microsoft</span>
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => signInWithGithub()}
+              className="w-full flex items-center justify-center gap-2 h-12 text-base"
+            >
+              <FaGithub className="h-5 w-5" />
+              <span>Continue with GitHub</span>
+            </Button>
+            <Button variant="link" asChild>
+              <Link to="/">Go back</Link>
+            </Button>
+          </div>
+
+          <p className="px-8 text-center text-sm text-muted-foreground">
+            By clicking continue, you agree to our{' '}
+            <a href="/terms" className="underline underline-offset-4 hover:text-primary">
+              Terms of Service
+            </a>{' '}
+            and{' '}
+            <a href="/privacy" className="underline underline-offset-4 hover:text-primary">
+              Privacy Policy
+            </a>
+            .
+          </p>
         </div>
       </div>
     </div>
