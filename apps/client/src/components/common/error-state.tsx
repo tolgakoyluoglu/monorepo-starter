@@ -1,4 +1,4 @@
-import { FiAlertCircle } from 'react-icons/fi'
+import { AlertCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 type ErrorStateProps = {
@@ -9,8 +9,8 @@ type ErrorStateProps = {
 }
 
 export const ErrorState = ({
-  title = 'Something went wrong',
-  message = 'Please try again later or contact support',
+  title = 'Något gick fel',
+  message = 'Försök igen senare eller kontakta support',
   cta = '',
   ctaUrl = '',
 }: ErrorStateProps) => {
@@ -18,7 +18,7 @@ export const ErrorState = ({
     <div className="flex items-center justify-center min-h-[200px] p-8">
       <div className="flex flex-col items-center text-center gap-4">
         <div className="w-12 h-12 rounded-full bg-destructive/10 flex items-center justify-center">
-          <FiAlertCircle size={24} className="text-destructive" />
+          <AlertCircle size={24} className="text-destructive" />
         </div>
         <div className="space-y-1">
           <h3 className="text-lg font-semibold">{title}</h3>

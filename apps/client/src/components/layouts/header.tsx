@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { authClient } from '@/lib/auth-client'
 import { MobileNav } from './sidebar'
 import { cn } from '@/lib/utils'
-import { FiMoon, FiSun } from 'react-icons/fi'
+import { Moon, Sun } from 'lucide-react'
 import { useTheme } from '@/hooks/use-theme'
 
 export function Header({ fullWidth }: { fullWidth?: boolean }) {
@@ -35,7 +35,7 @@ export function Header({ fullWidth }: { fullWidth?: boolean }) {
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             title="Toggle theme"
           >
-            {theme === 'dark' ? <FiSun className="h-5 w-5" /> : <FiMoon className="h-5 w-5" />}
+            {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
           {session ? (
             <span className="text-sm text-muted-foreground hidden sm:inline">
@@ -47,7 +47,7 @@ export function Header({ fullWidth }: { fullWidth?: boolean }) {
                 <Link to="/login">Sign In</Link>
               </Button>
               <Button asChild className="hidden sm:inline-flex">
-                <Link to="/login">Get Started</Link>
+                <Link to="/register">Get Started</Link>
               </Button>
             </div>
           )}

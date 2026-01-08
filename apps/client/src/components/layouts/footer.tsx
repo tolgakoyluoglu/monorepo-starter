@@ -1,5 +1,4 @@
-import { FaGithub, FaLinkedin } from 'react-icons/fa'
-import { MdEmail, MdAutoAwesome } from 'react-icons/md'
+import { Github, Linkedin, Mail, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export const Footer = () => {
@@ -9,7 +8,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <MdAutoAwesome className="h-5 w-5 text-primary" />
+              <Sparkles className="h-5 w-5 text-primary" />
               <h3 className="text-lg font-semibold">Fullstack</h3>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md">Fullstack</p>
@@ -21,7 +20,7 @@ export const Footer = () => {
                 className="h-10 w-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-colors"
                 aria-label="GitHub"
               >
-                <FaGithub className="h-5 w-5" />
+                <Github className="h-5 w-5" />
               </a>
               <a
                 href="https://linkedin.com"
@@ -30,14 +29,14 @@ export const Footer = () => {
                 className="h-10 w-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-colors"
                 aria-label="LinkedIn"
               >
-                <FaLinkedin className="h-5 w-5" />
+                <Linkedin className="h-5 w-5" />
               </a>
               <a
                 href="mailto:hello@nordicfreelancers.com"
                 className="h-10 w-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-colors"
                 aria-label="Email"
               >
-                <MdEmail className="h-5 w-5" />
+                <Mail className="h-5 w-5" />
               </a>
             </div>
           </div>

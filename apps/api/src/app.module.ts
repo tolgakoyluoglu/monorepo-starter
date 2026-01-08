@@ -8,6 +8,7 @@ import { HttpExceptionFilter, SanitizePipe } from './common'
 import { AppController } from './app.controller'
 import { DbModule } from './db'
 import { AuthModule } from './modules/auth/auth-module'
+import { UsersModule } from './modules/users/users.module'
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { AuthModule } from './modules/auth/auth-module'
     LoggerModule.forRoot(loggerConfig),
     DbModule,
     AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [

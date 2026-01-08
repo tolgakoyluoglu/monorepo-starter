@@ -20,8 +20,6 @@ export interface RequestWithSession {
   session: UserSession
 }
 
-export type UserRole = 'OWNER' | 'EMPLOYEE' | 'ADMIN'
-
 export const CurrentUser = createParamDecorator((data: unknown, ctx: ExecutionContext) => {
   const request = ctx.switchToHttp().getRequest<RequestWithSession>()
   return request.session.user

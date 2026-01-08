@@ -1,8 +1,8 @@
 import { Injectable, CanActivate, ExecutionContext, ForbiddenException } from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
 import { RequestWithSession, Roles } from '@/common/decorators'
-import { UserRole } from '@/common/decorators/current-user.decorator'
 
+type UserRole = 'OWNER' | 'EMPLOYEE' | 'ADMIN'
 @Injectable()
 export class RolesGuard implements CanActivate {
   constructor(private reflector: Reflector) {}
