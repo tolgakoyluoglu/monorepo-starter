@@ -1,10 +1,10 @@
 import { useMutation } from '@tanstack/react-query'
 import { authClient } from '@/lib/auth-client'
-import type { LoginInput, RegisterInput, User } from '@repo/shared'
+import type { LoginInput, RegisterInput } from '@repo/shared'
 
 export function useSession() {
   const { data, isPending, error } = authClient.useSession()
-  const user = data?.user as User | undefined
+  const user = data?.user
 
   return {
     user,

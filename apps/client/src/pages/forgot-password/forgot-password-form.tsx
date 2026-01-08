@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { authClient } from '@/lib/auth-client'
@@ -9,7 +9,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Field, FieldLabel, FieldError, FieldGroup } from '@/components/ui/field'
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp'
 import { useNavigate } from 'react-router-dom'
-import { AlertCircle } from 'lucide-react'
+import { FaExclamationCircle } from 'react-icons/fa'
 
 const emailSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -103,22 +103,29 @@ export const ForgotPasswordForm = () => {
       <div className="flex flex-col gap-6">
         {error && (
           <Alert variant="destructive">
-            <AlertCircle className="h-4 w-4" />
+            <FaExclamationCircle className="h-4 w-4" />
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
         <form onSubmit={emailForm.handleSubmit(handleSendCode)}>
           <FieldGroup>
-            <Field data-invalid={!!emailForm.formState.errors.email}>
-              <FieldLabel htmlFor="email">Email</FieldLabel>
-              <Input
-                id="email"
-                type="email"
-                placeholder="name@example.com"
-                {...emailForm.register('email')}
-              />
-              <FieldError>{emailForm.formState.errors.email?.message}</FieldError>
-            </Field>
+            <Controller
+              name="email"
+              control={emailForm.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor="email">Email</FieldLabel>
+                  <Input
+                    {...field}
+                    id="email"
+                    type="email"
+                    placeholder="name@example.com"
+                    aria-invalid={fieldState.invalid}
+                  />
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                </Field>
+              )}
+            />
             <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? 'Sending...' : 'Send Reset Code'}
             </Button>
@@ -132,7 +139,7 @@ export const ForgotPasswordForm = () => {
     <div className="flex flex-col gap-6">
       {error && (
         <Alert variant="destructive">
-          <AlertCircle className="h-4 w-4" />
+          <FaExclamationCircle className="h-4 w-4" />
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
@@ -152,27 +159,41 @@ export const ForgotPasswordForm = () => {
             </InputOTP>
           </div>
 
-          <Field data-invalid={!!resetForm.formState.errors.password}>
-            <FieldLabel htmlFor="password">New Password</FieldLabel>
-            <Input
-              id="password"
-              type="password"
-              placeholder="••••••••"
-              {...resetForm.register('password')}
-            />
-            <FieldError>{resetForm.formState.errors.password?.message}</FieldError>
-          </Field>
+          <Controller
+            name="password"
+            control={resetForm.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor="password">New Password</FieldLabel>
+                <Input
+                  {...field}
+                  id="password"
+                  type="password"
+                  placeholder="••••••••"
+                  aria-invalid={fieldState.invalid}
+                />
+                {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+              </Field>
+            )}
+          />
 
-          <Field data-invalid={!!resetForm.formState.errors.confirmPassword}>
-            <FieldLabel htmlFor="confirmPassword">Confirm Password</FieldLabel>
-            <Input
-              id="confirmPassword"
-              type="password"
-              placeholder="••••••••"
-              {...resetForm.register('confirmPassword')}
-            />
-            <FieldError>{resetForm.formState.errors.confirmPassword?.message}</FieldError>
-          </Field>
+          <Controller
+            name="confirmPassword"
+            control={resetForm.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor="confirmPassword">Confirm Password</FieldLabel>
+                <Input
+                  {...field}
+                  id="confirmPassword"
+                  type="password"
+                  placeholder="••••••••"
+                  aria-invalid={fieldState.invalid}
+                />
+                {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+              </Field>
+            )}
+          />
 
           <Button type="submit" className="w-full" disabled={isLoading}>
             {isLoading ? 'Resetting...' : 'Reset Password'}

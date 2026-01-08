@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { authClient } from '@/lib/auth-client'
 import { MobileNav } from './sidebar'
 import { cn } from '@/lib/utils'
-import { Moon, Sun } from 'lucide-react'
+import { FaMoon, FaSun } from 'react-icons/fa'
 import { useTheme } from '@/hooks/use-theme'
 
 export function Header({ fullWidth }: { fullWidth?: boolean }) {
@@ -22,7 +22,7 @@ export function Header({ fullWidth }: { fullWidth?: boolean }) {
           {session && <MobileNav />}
           <Link to={session ? '/dashboard' : '/'} className="flex items-center gap-2 no-underline">
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm">
-              B
+              FS
             </div>
             <span className="font-semibold text-lg text-foreground">Fullstack Starter</span>
           </Link>
@@ -35,7 +35,7 @@ export function Header({ fullWidth }: { fullWidth?: boolean }) {
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             title="Toggle theme"
           >
-            {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            {theme === 'dark' ? <FaSun className="h-5 w-5" /> : <FaMoon className="h-5 w-5" />}
           </Button>
           {session ? (
             <span className="text-sm text-muted-foreground hidden sm:inline">

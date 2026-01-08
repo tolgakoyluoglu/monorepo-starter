@@ -7,11 +7,7 @@ export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, isLoading, isAuthenticated } = useSession()
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-200">
-        <Loading />
-      </div>
-    )
+    return <Loading fullPage />
   }
 
   if (!isAuthenticated) {

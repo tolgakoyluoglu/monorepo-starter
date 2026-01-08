@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { authClient } from '@/lib/auth-client'
-import { AlertCircle } from 'lucide-react'
+import { FaExclamationCircle } from 'react-icons/fa'
 import {
   Dialog,
   DialogContent,
@@ -81,7 +81,7 @@ export const EmailVerificationDialog = ({ email, onVerified }: EmailVerification
         <div className="flex flex-col gap-4">
           {error && (
             <Alert variant="destructive">
-              <AlertCircle className="h-4 w-4" />
+              <FaExclamationCircle className="h-4 w-4" />
               <AlertDescription>{error}</AlertDescription>
             </Alert>
           )}

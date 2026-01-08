@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ResetPasswordForm } from './reset-password-form'
-import { ChevronLeft } from 'lucide-react'
+import { FaChevronLeft } from 'react-icons/fa'
 
 export const ResetPasswordPage = () => {
   return (
@@ -23,7 +23,7 @@ export const ResetPasswordPage = () => {
             to="/login"
             className="p-4 lg:p-8 inline-flex items-center gap-2 text-sm text-muted-foreground no-underline hover:text-foreground transition-colors"
           >
-            <ChevronLeft size={16} />
+            <FaChevronLeft size={16} />
             Back to login
           </Link>
         </div>

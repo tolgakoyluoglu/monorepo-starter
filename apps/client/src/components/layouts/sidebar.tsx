@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { LayoutDashboard, LogOut, Menu, Settings } from 'lucide-react'
+import { FaTachometerAlt, FaSignOutAlt, FaBars, FaCog } from 'react-icons/fa'
 import { useSignOut } from '@/hooks/use-auth'
 import { Link, useLocation } from 'react-router-dom'
 import { cn } from '@/lib/utils'
@@ -7,8 +7,8 @@ import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 
 const navLinks = [
-  { name: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
-  { name: 'Settings', icon: Settings, path: '#' },
+  { name: 'Dashboard', icon: FaTachometerAlt, path: '/dashboard' },
+  { name: 'Settings', icon: FaCog, path: '#' },
 ]
 
 export const Sidebar = () => {
@@ -61,7 +61,7 @@ export const Sidebar = () => {
             className="cursor-pointer flex items-center gap-4 p-3 rounded-lg w-full bg-transparent border-none text-foreground text-base transition-colors duration-150 hover:bg-accent overflow-hidden"
           >
             <span className="shrink-0 min-w-6">
-              <LogOut size={24} />
+              <FaSignOutAlt size={24} />
             </span>
             <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               Logout
@@ -87,7 +87,7 @@ export const MobileNav = () => {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button variant="ghost" size="icon" className="lg:hidden">
-          <Menu className="h-5 w-5" />
+          <FaBars className="h-5 w-5" />
           <span className="sr-only">Toggle menu</span>
         </Button>
       </SheetTrigger>
@@ -121,7 +121,7 @@ export const MobileNav = () => {
             onClick={handleLogout}
             className="flex items-center gap-3 px-3 py-2 rounded-lg w-full bg-transparent border-none text-foreground text-base transition-colors hover:bg-accent mt-4 cursor-pointer"
           >
-            <LogOut size={20} />
+            <FaSignOutAlt size={20} />
             <span>Logout</span>
           </button>
         </nav>

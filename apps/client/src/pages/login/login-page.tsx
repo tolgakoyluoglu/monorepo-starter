@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { LoginForm } from './login-form'
-import { ChevronLeft } from 'lucide-react'
+import { FaChevronLeft } from 'react-icons/fa'
 
 export const LoginPage = () => {
   return (
@@ -23,7 +23,7 @@ export const LoginPage = () => {
             to="/"
             className="p-4 lg:p-8 inline-flex items-center gap-2 text-sm text-muted-foreground no-underline hover:text-foreground transition-colors"
           >
-            <ChevronLeft size={16} />
+            <FaChevronLeft size={16} />
             Back to home
           </Link>
         </div>
